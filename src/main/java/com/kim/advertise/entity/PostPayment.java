@@ -9,49 +9,34 @@ import javax.persistence.*;
 public class PostPayment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
     
-	    private  boolean   contact;
-	    private  boolean   price;
+	@Enumerated(EnumType.STRING)
+	@Column(length = 20)
+    private EPostPaymentOptions   option;
+	 
+	    
 	    private  boolean   negotiable;
-	    private  boolean   commision;
-	    private  boolean   range;
-	    
-	    
-	    
 	    private  Integer  price_amount;
 	    private  Integer   min;
 	    private   Integer  max;
-	    
-		public Integer getId() {
+		public Long getId() {
 			return id;
 		}
-		public void setId(Integer id) {
+		public void setId(Long id) {
 			this.id = id;
 		}
-		public boolean isContact() {
-			return contact;
+		public EPostPaymentOptions getOption() {
+			return option;
 		}
-		public void setContact(boolean contact) {
-			this.contact = contact;
+		public void setOption(EPostPaymentOptions option) {
+			this.option = option;
 		}
-		public boolean isPrice() {
-			return price;
+		public boolean isNegotiable() {
+			return negotiable;
 		}
-		public void setPrice(boolean price) {
-			this.price = price;
-		}
-		public boolean isCommision() {
-			return commision;
-		}
-		public void setCommision(boolean commision) {
-			this.commision = commision;
-		}
-		public boolean isRange() {
-			return range;
-		}
-		public void setRange(boolean range) {
-			this.range = range;
+		public void setNegotiable(boolean negotiable) {
+			this.negotiable = negotiable;
 		}
 		public Integer getPrice_amount() {
 			return price_amount;
@@ -71,13 +56,6 @@ public class PostPayment {
 		public void setMax(Integer max) {
 			this.max = max;
 		}
-		public boolean isNegotiable() {
-			return negotiable;
-		}
-		public void setNegotiable(boolean negotiable) {
-			this.negotiable = negotiable;
-		}
-	    
-	    
+	  
 	    
 }

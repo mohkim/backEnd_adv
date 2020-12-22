@@ -17,6 +17,8 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.sun.istack.NotNull;
+
 @Entity
 
 public class ProductSubCatagory {
@@ -60,9 +62,10 @@ public class ProductSubCatagory {
 	@Column(name = "fee_year1_enable")
 	private boolean fee_year_enable=false;;
 	private Integer fee_year;
-	
-	private  Integer  img_min;
-	private  Integer  img_max;
+	@NotNull
+	private  Integer  img_min=0;
+	@NotNull
+	private  Integer  img_max=0;
 
 	public Long getId() {
 		return id;

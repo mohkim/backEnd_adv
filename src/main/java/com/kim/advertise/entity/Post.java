@@ -32,12 +32,7 @@ public class Post {
 	@Column(length = 10485760)
 	private String detail;
     
-	@NotNull
-    private Integer price;
-      
- 
-	
-	@NotNull
+    @NotNull
 	@ManyToOne
 	@JoinColumn(name = "fk_sales_location")
 	private  SalesLocation  salesLocation;
@@ -53,6 +48,11 @@ public class Post {
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "fk_post")
 	private List<PostSpecification> specificationList = new ArrayList<PostSpecification>();
+	
+	@Enumerated(EnumType.STRING)
+	@Column(length = 20)
+	private   EPostStatus   post_status;
+	
 	@CreationTimestamp
 	private LocalDateTime createdDate;
 
@@ -115,15 +115,7 @@ public class Post {
 	}
 
 
-	public Integer getPrice() {
-		return price;
-	}
-
-
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-
+ 
 
  
 
@@ -206,6 +198,16 @@ public class Post {
 
 	public void setPost_payment(PostPayment post_payment) {
 		this.post_payment = post_payment;
+	}
+
+
+	public EPostStatus getPost_status() {
+		return post_status;
+	}
+
+
+	public void setPost_status(EPostStatus post_status) {
+		this.post_status = post_status;
 	}
 	 
 }

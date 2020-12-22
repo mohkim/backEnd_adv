@@ -109,7 +109,14 @@ public class User {
 	public Set<Role> getRoles() {
 		return roles;
 	}
-
+	
+	public void addRole(Role r) {
+		 roles.add(r);
+	}
+	public void removeRole(Role r) {
+		 roles.remove(r);
+	}
+	
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}

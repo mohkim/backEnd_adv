@@ -1,6 +1,7 @@
 package com.kim.advertise.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -22,7 +23,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kim.advertise.Service.RoleService;
 import com.kim.advertise.Service.UserService;
+import com.kim.advertise.entity.ERole;
+import com.kim.advertise.entity.Role;
 import com.kim.advertise.entity.User;
 import com.kim.advertise.jwt.MessageResponse;
 
@@ -36,7 +40,8 @@ public class UserResource {
  
 	@Autowired
 	private UserService  userService;
-	
+	@Autowired
+	private RoleService  roleService;
 	 private Logger  log=LoggerFactory.getLogger(this.getClass());
 	
 	@GetMapping("/user")
@@ -48,6 +53,11 @@ public class UserResource {
     public User getSingleUser(@PathVariable  Long id) {
 	 User c=userService.getUser(id);
 		return   c;
+	}
+	@GetMapping("/user/{id}/role")
+    public Set<Role> getAllUserRole(@PathVariable  Long id) {
+	 return userService.getUser(id).getRoles();
+		 
 	}
 	@DeleteMapping("/user/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable  Long id) {
@@ -126,6 +136,41 @@ public  ResponseEntity<?> getUserImageUlr( @PathVariable Long  id ) {
 		 Resource file=userService.loadUserImage(id);
 		    return ResponseEntity.ok()
 		        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+	} 
+	
+	@DeleteMapping("/user/{id}/role/{rid}")
+    public ResponseEntity<?> deleteUserRole(@PathVariable  Long id,@PathVariable  Long rid) {
+	        
+		User  u=userService.getUser(id);
+		Role  r=roleService.getRole(rid);
+		if(r.getName().equals(ERole.ROLE_USER)) {
+			return ResponseEntity
+					.badRequest()
+					.body(new MessageResponse("User Role Cannot be Deleted !!!"));
+		 }else {
+			 u.removeRole(r);
+			 userService.save(u);
+			 return ResponseEntity.ok(new MessageResponse("Role deleted Successfully !!!"));
+		 }
+	  
 	}
+	@GetMapping("/user/{id}/role/{rid}")
+    public ResponseEntity<?> addUserRole(@PathVariable  Long id,@PathVariable  Long rid) {
+		 
+		User  u=userService.getUser(id);
+		Role  r=roleService.getRole(rid);
+		Set<Role> list=u.getRoles();
+		  if(list.contains(r)) {
+		    	return ResponseEntity
+						.badRequest()
+						.body(new MessageResponse("User  already has the Role !!!"));
+		  }else {
+			  u.addRole(r);
+			  userService.save(u);
+			  return ResponseEntity.ok(new MessageResponse("User Role Saved Successfully !!!"));
+		  }
+	 	 
+	}
+	
 }
 
