@@ -17,6 +17,7 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.kim.advertise.entity.post.EType;
 import com.sun.istack.NotNull;
 
 @Entity

@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kim.advertise.Repository.RoleRepository;
-import com.kim.advertise.entity.ERole;
 import com.kim.advertise.entity.Role;
+import com.kim.advertise.entity.post.ERole;
 
 /**
  *

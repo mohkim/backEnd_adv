@@ -23,7 +23,7 @@ import com.kim.advertise.jwt.MessageResponse;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/adv/admin")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+
 public class ProductCatagoryResource {
 
 	@Autowired
@@ -42,6 +42,7 @@ public class ProductCatagoryResource {
 	}
 
 	@PostMapping("/catagory")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> saveNewUser(@Valid @RequestBody ProductCatagory c) {
 		if (catService.save(c) != null) {
 			return ResponseEntity.ok(new MessageResponse("New Catagory Saved Successfully !!!"));
@@ -52,6 +53,7 @@ public class ProductCatagoryResource {
 	}
 
 	@DeleteMapping("/catagory/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> saveUpdateUser(@PathVariable Long id) {
 		ProductCatagory pc = catService.getProductCatagory(id);
 

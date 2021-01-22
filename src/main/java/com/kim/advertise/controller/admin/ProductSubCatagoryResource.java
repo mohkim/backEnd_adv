@@ -27,7 +27,7 @@ import com.kim.advertise.jwt.MessageResponse;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/adv/admin/")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+
 public class ProductSubCatagoryResource {
 
 	@Autowired
@@ -52,6 +52,7 @@ public class ProductSubCatagoryResource {
 	}
 
 	@DeleteMapping("subcatagory/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> deleteSubCatagory( @PathVariable Long id) {
 	 
  
@@ -66,6 +67,7 @@ public class ProductSubCatagoryResource {
 	}
 
 	@PostMapping("/catagory/{id}/subcatagory")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> saveSubCatagory(@PathVariable Long id,@Valid @RequestBody ProductSubCatagory pSc) {
 		log.info("Sub catagory is kemal ->"+pSc.toString());
 		ProductCatagory pc = catService.getProductCatagory(id);

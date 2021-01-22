@@ -8,12 +8,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class demo {
 
 	public static void main(String[] args) {
-	  Path root = Paths.get("E:\\upload");
-	 
-	  System.out.println( root.resolve("dkjlsdjfklsd.jpg").toString());
-	 
+	  
+	 enumToString();
 	   
 	}
+	public static void  enumToString() {
+		System.out.println(status.OFF.name());
+	}
+	
+	
 	public static void  bycriptysample() {
 		 BCryptPasswordEncoder  endoer=new  BCryptPasswordEncoder();
 		  
@@ -27,4 +30,9 @@ public class demo {
 	}
 
   
+}
+
+enum   status{
+	ON,OFF
+	
 }

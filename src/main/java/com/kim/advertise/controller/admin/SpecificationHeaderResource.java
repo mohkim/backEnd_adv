@@ -25,7 +25,7 @@ import com.kim.advertise.jwt.MessageResponse;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/adv/admin")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+
 public class SpecificationHeaderResource {
 
 	@Autowired
@@ -49,6 +49,7 @@ public class SpecificationHeaderResource {
 	}
 
 	@DeleteMapping("/specification_head/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> deleteSpecificationHead(@PathVariable Long id) {
 		SpecificationHead sp = speHeadService.getSpecificationHead(id);
    
@@ -62,6 +63,7 @@ public class SpecificationHeaderResource {
 	}
 
 	@PostMapping("/subcatagory/{id}/specification_head")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> saveSubCatagory(@PathVariable Long id,@Valid @RequestBody SpecificationHead spHead) {
 		 
 		ProductSubCatagory  pSc = subCatagoryService.getProductSubCatagory(id);

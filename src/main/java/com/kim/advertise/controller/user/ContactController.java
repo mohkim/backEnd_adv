@@ -25,7 +25,7 @@ import com.kim.advertise.jwt.MessageResponse;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/adv")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+
 public class ContactController {
 
 	@Autowired
@@ -46,6 +46,7 @@ public class ContactController {
 	}
 
 	@PostMapping("/user/{id}/contact")
+	@PreAuthorize("hasRole('ROLE_USER')")	
 	public ResponseEntity<?> saveNewContact(@Valid @RequestBody Contact c, @PathVariable Long id) {
 
 		User user = userServ.getUser(id);
@@ -65,6 +66,7 @@ public class ContactController {
 	}
 
 	@DeleteMapping("/user/contact/{id}")
+	@PreAuthorize("hasRole('ROLE_USER')")
 	public ResponseEntity<?> deleteContact(@PathVariable Long id) {
 		contactService.deleteContact(id);
      return ResponseEntity.ok(new MessageResponse("Contact deleted Successfully !!!"));

@@ -23,7 +23,7 @@ import com.kim.advertise.jwt.MessageResponse;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/adv/admin")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+
 public class SalesLocationResource {
 
 	@Autowired
@@ -42,6 +42,7 @@ public class SalesLocationResource {
 	}
 
 	@PostMapping("/saleslocation")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> saveNewSalesLocation(@Valid @RequestBody SalesLocation c) {
 		if (salesLocServ.save(c) != null) {
 			return ResponseEntity.ok(new MessageResponse("New Catagory Saved Successfully !!!"));
@@ -52,6 +53,7 @@ public class SalesLocationResource {
 	}
 
 	@DeleteMapping("/saleslocation/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> deleteSalesLocation(@PathVariable Long id) {
 		salesLocServ.deleteSalesLocation(id);
 			   

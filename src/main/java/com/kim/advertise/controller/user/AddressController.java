@@ -27,7 +27,7 @@ import com.kim.advertise.jwt.MessageResponse;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/adv")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+
 public class AddressController {
 
 	@Autowired
@@ -50,6 +50,7 @@ public class AddressController {
 	}
 
 	@PostMapping("/user/{id}/address")
+	@PreAuthorize("hasRole('ROLE_USER')")
 	public ResponseEntity<?> saveNewAddress(@Valid @RequestBody Address c, @PathVariable Long id) {
    
 		log.info("address data =>"+c.toString());
@@ -72,6 +73,7 @@ public class AddressController {
 	}
 
 	@DeleteMapping("/user/address/{id}")
+	@PreAuthorize("hasRole('ROLE_USER')")
 	public ResponseEntity<?> deleteAddress(@PathVariable Long id) {
 		addressServ.deleteById(id);
 

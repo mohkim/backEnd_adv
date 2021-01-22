@@ -2,6 +2,8 @@ package com.kim.advertise.entity;
 
 import javax.persistence.*;
 
+import com.kim.advertise.entity.post.ERole;
+
  
 
 @Entity

@@ -86,37 +86,39 @@ public class UserService {
 	}
 
 	public boolean saveUserImage(MultipartFile file, User user) {
-		log.info(" save User Image function ");
+		
 		try {
-		    if(user.getProfile_image() !=null) {
-		        Files.deleteIfExists(this.root.resolve(user.getProfile_image().getName()));
+		    if(user.getImage_url()!=null  ) {
+		        Files.deleteIfExists(this.root.resolve(user.getImage_name()));
 			 } 
-			PictureUpload pic = new PictureUpload();
-		    pic.setName(setUserProfileFileName(file.getOriginalFilename(),user.getId()));
-			Files.copy(file.getInputStream(), this.root.resolve(pic.getName()));
+		    log.info("user upload data => "+user.toString());
+			 
+		    user.setImage_name(setUserProfileFileName(file.getOriginalFilename(),user.getId()));
+			Files.copy(file.getInputStream(), this.root.resolve(user.getImage_name()));
 			 
 			  
 			String url = MvcUriComponentsBuilder
-			          .fromMethodName(UserResource.class, "getImage", user.getId(),pic.getName()).build().toString();
+			          .fromMethodName(UserResource.class, "getImage", user.getId(),user.getImage_name()).build().toString();
 			
 			log.info("Image upload name => "+url);
-			pic.setUrl(url);
-			pic = picService.save(pic);
-			user.setProfile_image(pic);
+			user.setImage_url(url);
+		 
+			 
 			save(user);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
-//             throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
+ //           throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
 
 		}
 	}
 
 	public Resource loadUserImage(Long id) {
-		PictureUpload pic=getUser(id).getProfile_image();
+		 
+		User usr=getUser(id);
 		try {
-			Path file = root.resolve(pic.getName());
+			Path file = root.resolve(usr.getImage_name());
 			Resource resource = new UrlResource(file.toUri());
 
 			if (resource.exists() || resource.isReadable()) {

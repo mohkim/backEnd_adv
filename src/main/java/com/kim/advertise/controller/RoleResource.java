@@ -7,9 +7,8 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.kim.advertise.Service.RoleService;
 import com.kim.advertise.entity.Role;
@@ -29,7 +25,7 @@ import com.kim.advertise.jwt.MessageResponse;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/adv/admin")
-//@PreAuthorize("hasRole('ROLE_ADMIN')")
+
 
 public class RoleResource {
 
@@ -50,6 +46,7 @@ public class RoleResource {
 		return   c;
 	}
 	@DeleteMapping("/role/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> deleteRole(@PathVariable  Long id) {
 	        
 		// roleService.deleteRoleById(id);
@@ -58,6 +55,7 @@ public class RoleResource {
 		 
 	}
 	@PostMapping("/role")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> saveRole( @Valid @RequestBody Role c) {
 		 
 		if(roleService.save(c)) { 

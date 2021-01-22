@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,16 +26,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kim.advertise.Service.RoleService;
 import com.kim.advertise.Service.UserService;
-import com.kim.advertise.entity.ERole;
 import com.kim.advertise.entity.Role;
 import com.kim.advertise.entity.User;
+import com.kim.advertise.entity.post.ERole;
 import com.kim.advertise.jwt.MessageResponse;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/adv/admin")
-//@PreAuthorize("hasRole('ROLE_ADMIN')")
-
 public class UserResource {
 
  
@@ -60,6 +59,7 @@ public class UserResource {
 		 
 	}
 	@DeleteMapping("/user/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> deleteUser(@PathVariable  Long id) {
 	        
 		// userService.deleteUserById(id);
@@ -68,6 +68,7 @@ public class UserResource {
 		 
 	}
 	@PostMapping("/user")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> saveUser( @Valid @RequestBody User c) {
 		log.info("Sub catagory is kemal ->"+c.toString());
 		if(userService.save(c)) { 
@@ -81,6 +82,7 @@ public class UserResource {
 		 
 	}
 	@PostMapping("/user/{id}/updateusername/{name}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> updateUserName( @PathVariable Long id , @PathVariable  String name) {
 	 
 		User  user=userService.getUser(id);
@@ -104,6 +106,7 @@ public class UserResource {
 	}
  
 	@PostMapping( "/user/{id}/image")
+	@PreAuthorize("hasRole('ROLE_USER')")
 	public  ResponseEntity<?>  saveUserImage( @RequestParam("file") MultipartFile file,@PathVariable Long id ) {
 		User  user=userService.getUser(id);
 		
@@ -111,7 +114,7 @@ public class UserResource {
 		 if(user==null)
 			return ResponseEntity.badRequest().body(new MessageResponse("User Not Found!!!"));
 		 
-		 log.info("user upload data => "+user.getFullName());
+		
 	    try {
 	   userService.saveUserImage(file,user);
 
@@ -127,7 +130,7 @@ public class UserResource {
 public  ResponseEntity<?> getUserImageUlr( @PathVariable Long  id ) {
 		User  user=userService.getUser(id);
 		 if(user==null) 	return ResponseEntity.badRequest().body(new MessageResponse(""));
-		  return ResponseEntity.ok(new MessageResponse(user.getProfile_image().getUrl()));  
+		  return ResponseEntity.ok(new MessageResponse(user.getImage_url()));  
 	  }
 	
 	@GetMapping("/user/{id}/image/{name}")
@@ -139,6 +142,7 @@ public  ResponseEntity<?> getUserImageUlr( @PathVariable Long  id ) {
 	} 
 	
 	@DeleteMapping("/user/{id}/role/{rid}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> deleteUserRole(@PathVariable  Long id,@PathVariable  Long rid) {
 	        
 		User  u=userService.getUser(id);
