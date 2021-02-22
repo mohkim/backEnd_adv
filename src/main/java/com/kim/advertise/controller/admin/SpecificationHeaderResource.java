@@ -65,16 +65,21 @@ public class SpecificationHeaderResource {
 	@PostMapping("/subcatagory/{id}/specification_head")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> saveSubCatagory(@PathVariable Long id,@Valid @RequestBody SpecificationHead spHead) {
-		 
+		SpecificationHead	  temp ;
 		ProductSubCatagory  pSc = subCatagoryService.getProductSubCatagory(id);
        
-		  
-		
+       
 		if (pSc != null) {
 			
+			if(spHead.getId() > 0L) 	{
+		    	   temp=speHeadService.getSpecificationHead(spHead.getId());
+		    	   spHead.setOption(temp.getOption());
+		       }
+			   
+			
 			SpecificationHead  sphead2=speHeadService.save(spHead);
-			
-			
+			 
+		System.out.println();
 			  pSc.addSpecificationList(sphead2);
 			
              			

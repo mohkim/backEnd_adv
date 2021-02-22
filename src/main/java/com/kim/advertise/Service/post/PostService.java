@@ -41,7 +41,7 @@ public class PostService {
 	
 	@Autowired
 	public PictureUploadService picService;
-	private final Path root = Paths.get("E:\\upload\\post");
+	private final Path root = Paths.get("K:\\upload\\post");
 
 	public Post save(Post post) {
 
@@ -211,5 +211,18 @@ public class PostService {
 		} catch (Exception e) {
 		return null;
 		}
+	}
+
+	public Post[] getAllActivePost() {
+       return  postRepo.findAllActivePost(EPostStatus.ACTIVE);
+		 
+	}
+
+	public Post getActivePostById(Long id) {
+		return  postRepo.findActivePostById(EPostStatus.ACTIVE ,id);
+	}
+
+	public Post[] getActivePostByUser(User user) {
+		return  postRepo.findActivePostByUser(EPostStatus.ACTIVE ,user.getId());
 	}
 }

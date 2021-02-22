@@ -13,7 +13,11 @@ public class PostRecipt {
 	
 	private Long id;
      
+	private   EPostServiceFree  feeOption;
+	
+	
 	private String receiptNo;
+	
 	
 	private  Integer  amount;
 	
@@ -41,6 +45,14 @@ public class PostRecipt {
 
 	public void setAmount(Integer amount) {
 		this.amount = amount;
+	}
+
+	public EPostServiceFree getFeeOption() {
+		return feeOption;
+	}
+
+	public void setFeeOption(EPostServiceFree feeOption) {
+		this.feeOption = feeOption;
 	}
 	
 	

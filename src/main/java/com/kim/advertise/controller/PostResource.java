@@ -18,6 +18,7 @@ import com.kim.advertise.Service.UserService;
 import com.kim.advertise.Service.post.PostService;
 import com.kim.advertise.entity.PictureUpload;
 import com.kim.advertise.entity.User;
+import com.kim.advertise.entity.post.EPostStatus;
 import com.kim.advertise.entity.post.Post;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -32,32 +33,34 @@ public class PostResource {
 	@Autowired
 	private UserService  userService;
 	@GetMapping("/post")
-	
-	public List<Post> getAllPost() {
-		List<Post> list = postService.allPost();
-		return list;
-	}
+	public Post[] getAllPost() {
+		return  postService.getAllActivePost();
+      }
 
 	@GetMapping("/post/{id}")
 	public Post getSinglePost(@PathVariable Long id) {
-		Post c = postService.getPost(id);
-		return c;
+		return postService.getActivePostById(id);
+		 
 	}
 	@GetMapping("/user/{id}/post")
 	public Post[] getPostByUser(@PathVariable Long id) {
 		User user=userService.getUser(id);
-		 if(user==null)  return null;
+		 if(user==null) {
+			 return null;
+		 } else if(user.isDisabledbyAdmin()) { // check for user disable
+			 return null;
+		 }
 		 
-		Post[] postlist = postService.getPostByUser(user);
+		Post[] postlist = postService.getActivePostByUser(user);
 		return postlist;
 	}
  	@GetMapping("/post/{id}/images")
 	public  List<PictureUpload>  getPostImages(@PathVariable  Long  id){
-		Post post = postService.getPost(id);
+		Post post = postService.getActivePostById(id);
 
 		if (post == null) {
 			return null;
-		}
+		} 
 		return  post.getPostImage();
 	}
 
@@ -65,13 +68,14 @@ public class PostResource {
 	@ResponseBody
 	public ResponseEntity<Resource> getImage(@PathVariable Long id, @PathVariable String name) {
 		Post post = postService.getPost(id);
-
+ // above code should only  get  images of active post
+		//but  current all the images source from this post
 		if (post == null) {
 			return null;
 		}
 		PictureUpload  pic=picService.getByFileName(name);
 		if(pic==null)  return null;
-   // get the image and return
+    
 		
 		 Resource file=postService.getUploadFile(pic);
 		    return ResponseEntity.ok()

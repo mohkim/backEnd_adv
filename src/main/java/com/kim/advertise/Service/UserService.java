@@ -40,7 +40,7 @@ public class UserService {
 	public UserRepository userRepo;
 	@Autowired
 	public PictureUploadService picService;
-	private final Path root = Paths.get("E:\\upload");
+	private final Path root = Paths.get("K:\\upload");
 	 
     
 	Logger  log=LoggerFactory.getLogger(UserService.class);

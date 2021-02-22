@@ -14,7 +14,6 @@ public class AdvProjectApplication implements CommandLineRunner {
 	
 	@Override
 	  public void run(String... arg) throws Exception {
- 
-	  }
+  }
 
 }

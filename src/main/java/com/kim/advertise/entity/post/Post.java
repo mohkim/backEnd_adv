@@ -77,6 +77,10 @@ public class Post {
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "fk_post_status")
 	private   Post_Status   post_status;
+	
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "fk_post_receipt")
+    private   PostRecipt    receipt;
 
 
 	public Long getId() {
@@ -214,6 +218,16 @@ public class Post {
 
 	public void setPost_receipt(PostRecipt post_receipt) {
 		this.post_receipt = post_receipt;
+	}
+
+
+	public PostRecipt getReceipt() {
+		return receipt;
+	}
+
+
+	public void setReceipt(PostRecipt receipt) {
+		this.receipt = receipt;
 	}
 
 

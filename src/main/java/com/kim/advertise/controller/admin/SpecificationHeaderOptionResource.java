@@ -63,8 +63,8 @@ public class SpecificationHeaderOptionResource {
 	}
 
 	@PostMapping("/specification_head/{id}/head_option")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<?> saveSubCatagory(@PathVariable Long id,@Valid @RequestBody SpecificationHeadOption spHeadO) {
+ 	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public ResponseEntity<?> saveSpecificationOption(@PathVariable Long id,@Valid @RequestBody SpecificationHeadOption spHeadO) {
 		 
 		SpecificationHead  spH = speHService.getSpecificationHead(id);
 

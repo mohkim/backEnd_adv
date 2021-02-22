@@ -16,7 +16,21 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 // common 
  public 	Post[] findByUser(User user);
  
+ //for geneal User
  
+ @Query("select t from Post t where t.post_status.status=?1 "
+	 		+ "   order by  t.post_status.status.approved_date DESC ")
+	 public     Post[]  findAllActivePost(EPostStatus status);
+ 
+ @Query("select t from Post t where t.post_status.status=?1 and t.id=?2 "
+	 		+ "   order by  t.post_status.status.approved_date DESC ")
+ public Post findActivePostById(EPostStatus active, Long id);
+ 
+ @Query("select t from Post t where t.post_status.status=?1 and t.user.id=?2 "
+	 		+ "   order by  t.post_status.status.approved_date DESC ")
+ public Post[] findActivePostByUser(EPostStatus active, Long id);
+ 
+ //
  
  @Query("select t from Post t where t.post_status.status=?1 "
 	 		+ "   order by  t.post_status.status.approved_date DESC ")
@@ -48,6 +62,10 @@ public Post[] findPostRejectedByUser(EPostStatus error, Long id);
  @Query("select t from Post t where t.post_status.status=?1 and t.post_status.status.approvedByUser.id=?2 "
  		+ " order by  t.post_status.status.approved_date  DESC")
 public Post[] findPostAcceptedByUser(EPostStatus accept, Long id);
+
+
+
+
  
  
  /// for   admin only
