@@ -34,11 +34,8 @@ public class AdvProjectApplication implements CommandLineRunner {
 	  @Autowired JsonToObject  jsonToObject;
 
 	public static void main(String[] args) {
-		
-		
-		SpringApplication.run(AdvProjectApplication.class, args);
-
-	}
+	 	SpringApplication.run(AdvProjectApplication.class, args);
+ }
 	
 
 	@Override
