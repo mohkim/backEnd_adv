@@ -39,7 +39,7 @@ public class JsonToObject {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	 @Transactional
    public void jsonFilesToDatabase() {	
-        jsonToDataBase("K:\\jsonData\\vehicle.json");
+        jsonToDataBase(".\\defaultData\\vehicle.json");
 	     
    }
 	 
