@@ -20,13 +20,13 @@ public class Contact {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@ManyToOne
-	@JoinColumn(name = "fk_usr")
-	private User user;
+ 
 	 
 	private String  phone;
 	
 	private  boolean active;
+	
+	
 	
 	@CreationTimestamp
 	public LocalDateTime createdDate;
@@ -41,13 +41,7 @@ public class Contact {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+ 
 
 	public String getPhone() {
 		return phone;
@@ -81,11 +75,7 @@ public class Contact {
 		this.active = active;
 	}
 
-	@Override
-	public String toString() {
-		return "Contact [id=" + id + ", user=" + user + ", phone=" + phone + ", active=" + active + ", createdDate="
-				+ createdDate + ", updatedTime=" + updatedTime + "]";
-	}
+	 
  
   
 	 

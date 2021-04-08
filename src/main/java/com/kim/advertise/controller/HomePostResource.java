@@ -20,11 +20,12 @@ import com.kim.advertise.entity.PictureUpload;
 import com.kim.advertise.entity.User;
 import com.kim.advertise.entity.post.EPostStatus;
 import com.kim.advertise.entity.post.Post;
+import com.kim.advertise.entity.view.UserView;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+ 
 @RestController
 @RequestMapping("/adv")
-public class PostResource {
+public class HomePostResource {
 
 	@Autowired
 	private PostService postService;
@@ -32,11 +33,27 @@ public class PostResource {
 	private PictureUploadService  picService;
 	@Autowired
 	private UserService  userService;
+	
+	@GetMapping("/user/{id}")   // for test not complete
+	public UserView getAllPost(@PathVariable Long id) {
+		return  userService.getUserById(id);
+      }	
 	@GetMapping("/post")
 	public Post[] getAllPost() {
 		return  postService.getAllActivePost();
       }
 
+	
+	@GetMapping("/post/cat/{id}")
+	public Post[] getPostByCat(@PathVariable Long id) {
+    return postService.getAllPostByCatagory_active(id);
+  
+      }
+	
+	@GetMapping("/post/subcat/{id}")
+	public Post[] getPostBySubCat(@PathVariable Long id) {
+		 return postService.getAllPostBySubCatagory_active(id);
+      }
 	@GetMapping("/post/{id}")
 	public Post getSinglePost(@PathVariable Long id) {
 		return postService.getActivePostById(id);

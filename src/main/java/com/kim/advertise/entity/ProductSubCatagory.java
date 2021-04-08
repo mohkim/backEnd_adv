@@ -8,15 +8,19 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kim.advertise.entity.post.EType;
 import com.sun.istack.NotNull;
 
@@ -28,7 +32,11 @@ public class ProductSubCatagory {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
-
+	 @ManyToOne(fetch = FetchType.LAZY)
+	 @JsonIgnore
+ 	 private  ProductCatagory productCatagory;
+	
+	
 	@NotBlank
 	private String name;
 
@@ -67,6 +75,19 @@ public class ProductSubCatagory {
 	private  Integer  img_min=0;
 	@NotNull
 	private  Integer  img_max=0;
+
+	
+	
+	public ProductSubCatagory(@NotBlank String name) {
+		super();
+		this.name = name;
+	}
+    
+	
+	public ProductSubCatagory() {
+		super();
+	}
+
 
 	public Long getId() {
 		return id;
@@ -219,6 +240,66 @@ public class ProductSubCatagory {
 	public void setImg_max(Integer img_max) {
 		this.img_max = img_max;
 	}
+
+	public ProductCatagory getProductCatagory() {
+		return productCatagory;
+	}
+
+	public void setProductCatagory(ProductCatagory productCatagory) {
+		this.productCatagory = productCatagory;
+	}
+
+
+	public void setPaymentOptionSetting(boolean contact, boolean price, boolean commision, boolean range) {
+		 
+		this.contact = contact;
+		this.price = price;
+		this.commision = commision;
+		this.range = range;
+	}
+
+
+	public void setServiceOptionSetting(boolean fee_free_enable, Integer fee_free, boolean fee_week_enable, Integer fee_week,
+			boolean fee_month_enable, Integer fee_month, boolean fee_year_enable, Integer fee_year) {
+		 
+		this.fee_free_enable = fee_free_enable;
+		this.fee_free = fee_free;
+		this.fee_week_enable = fee_week_enable;
+		this.fee_week = fee_week;
+		this.fee_month_enable = fee_month_enable;
+		this.fee_month = fee_month;
+		this.fee_year_enable = fee_year_enable;
+		this.fee_year = fee_year;
+	}
+
+
+	public void imgNumberSetting(Integer img_min, Integer img_max) {
+	 
+		this.img_min = img_min;
+		this.img_max = img_max;
+	}
+
+
+	public void  setAmountOfFee(Integer fee_free, Integer fee_week, Integer fee_month,Integer fee_year) {
+		 
+		this.fee_free = fee_free;
+		this.fee_week = fee_week;
+		this.fee_month = fee_month;
+		this.fee_year=fee_year;
+	}
+
+
+	@Override
+	public String toString() {
+		return "ProductSubCatagory [id=" + id + ", productCatagory=" + productCatagory + ", name=" + name + ", type="
+				+ type + ", specificationList=" + specificationList + "]";
+	}
+	
+
+
+ 
+	
+	
    
 	
 }

@@ -1,0 +1,94 @@
+{
+	"folders": {},
+	"connections": {
+		"derby-17866051e07-63957932fbf7fe7e": {
+			"provider": "generic",
+			"driver": "derby",
+			"name": "CrownDataBase",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "C:\\Users\\USER_K\\Desktop\\crown\\CrownDataBase",
+				"url": "jdbc:derby:C:\\Users\\USER_K\\Desktop\\crown\\CrownDataBase",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"derby-17866099c3a-5c7f46d6b16d8dda": {
+			"provider": "generic",
+			"driver": "derby",
+			"name": "CrownDataBase 2",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "C:\\Users\\USER_K\\Desktop\\crown\\CrownDataBase",
+				"url": "jdbc:derby:C:\\Users\\USER_K\\Desktop\\crown\\CrownDataBase",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"postgres-jdbc-178822127c0-259adb1d208f3df9": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "postgres",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "5432",
+				"database": "postgres",
+				"url": "jdbc:postgresql://localhost:5432/postgres",
+				"home": "postgresql-x64-11",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-show-template-db@": "false",
+					"@dbeaver-show-unavailable-db@": "false",
+					"@dbeaver-read-all-data-types-db@": "false",
+					"@dbeaver-use-prepared-statements-db@": "false",
+					"postgresql.dd.plain.string": "false",
+					"postgresql.dd.tag.string": "false"
+				},
+				"auth-model": "native",
+				"handlers": {}
+			}
+		},
+		"postgres-jdbc-17882242634-346b06e2bfab8a94": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "postgres 2",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "5432",
+				"database": "postgres",
+				"url": "jdbc:postgresql://localhost:5432/advertise",
+				"home": "postgresql-x64-11",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-show-template-db@": "false",
+					"@dbeaver-show-unavailable-db@": "false",
+					"@dbeaver-read-all-data-types-db@": "false",
+					"@dbeaver-use-prepared-statements-db@": "false",
+					"postgresql.dd.plain.string": "false",
+					"postgresql.dd.tag.string": "false"
+				},
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}

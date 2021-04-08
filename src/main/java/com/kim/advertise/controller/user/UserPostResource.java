@@ -28,7 +28,7 @@ import com.kim.advertise.entity.User;
 import com.kim.advertise.entity.post.Post;
 import com.kim.advertise.jwt.MessageResponse;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+ 
 @RestController
 @RequestMapping("/adv/user/")
 @PreAuthorize("hasRole('ROLE_USER')")

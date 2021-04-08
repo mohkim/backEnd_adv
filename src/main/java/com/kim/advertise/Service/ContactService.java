@@ -50,7 +50,5 @@ public class ContactService {
     		if(salesLoc.isPresent()) return  salesLoc.get();
     		else  return null;
      }
- 	public Contact getByUser(User user) {
-		return  contactRepo.getContactByUser(user.getId());
-	}
+ 	 
 }

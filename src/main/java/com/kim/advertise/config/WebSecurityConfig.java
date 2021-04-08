@@ -1,7 +1,8 @@
-package com.kim.advertise.jwt;
+package com.kim.advertise.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +15,13 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.kim.advertise.jwt.AuthEntryPointJwt;
+import com.kim.advertise.jwt.AuthTokenFilter;
+import com.kim.advertise.jwt.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -21,13 +29,27 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 		// securedEnabled = true,
 		// jsr250Enabled = true,
 		prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+ 
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
 
 	@Autowired
 	private AuthEntryPointJwt unauthorizedHandler;
 
+    @Value("${appName.developmentUrl}")
+    private String devUrl;
+
+    @Value("${appName.productionUrl}")
+    private String prodUrl;
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins(devUrl, prodUrl);
+    }
+ 
+	
 	@Bean
 	public AuthTokenFilter authenticationJwtTokenFilter() {
 		return new AuthTokenFilter();

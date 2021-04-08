@@ -48,7 +48,7 @@ import com.kim.advertise.jwt.UserDetailsImpl;
  
  
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+ 
 @RestController
 @RequestMapping("/adv/auth")
 public class AuthResourse {

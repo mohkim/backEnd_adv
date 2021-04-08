@@ -1,8 +1,5 @@
 package com.kim.advertise.entity;
 
-
- 
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +7,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+ 
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -21,37 +19,35 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+ 
 
 @Entity
 @Table(name = "product_category")
- 
+
 public class ProductCatagory {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
-    @Column(name = "name")
-    @NotBlank
-    private String name;
-    
-    @NotBlank
-    private  String icon;
-    
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-        )
-    @JoinColumn(name = "fk_product" )
-    List<ProductSubCatagory>   productSubCatagory=new ArrayList<ProductSubCatagory>();
-    
-    
-   @CreationTimestamp
-    public LocalDateTime createdDate;
-    @UpdateTimestamp
-    public LocalDateTime  updatedTime;
-    
+	@Column(name = "name")
+	@NotBlank
+	private String name;
+
+	private String icon;
+
+	private String img;
+
+	@OneToMany(fetch = FetchType.LAZY,
+			mappedBy = "productCatagory",
+			cascade = CascadeType.ALL, orphanRemoval = true)
+	 
+	List<ProductSubCatagory> productSubCatagory = new ArrayList<ProductSubCatagory>();
+
+ 
 	public Long getId() {
 		return id;
 	}
@@ -68,7 +64,6 @@ public class ProductCatagory {
 		this.name = name;
 	}
 
-	
 	public String getIcon() {
 		return icon;
 	}
@@ -80,52 +75,50 @@ public class ProductCatagory {
 	public List<ProductSubCatagory> getProductSubcatagory() {
 		return productSubCatagory;
 	}
-	public void remoProductSubcatagory(ProductSubCatagory  proSubCat) {
-		     productSubCatagory.remove(proSubCat);
+
+	public void remoProductSubcatagory(ProductSubCatagory proSubCat) {
+		productSubCatagory.remove(proSubCat);
 	}
-	public boolean  addProductSubcatagory(ProductSubCatagory  proSubCat) {
-		 return   productSubCatagory.add(proSubCat);
+
+	public boolean addProductSubcatagory(ProductSubCatagory proSubCat) {
+		return productSubCatagory.add(proSubCat);
 	}
-	 
 
 	public void setProductSubcatagory(List<ProductSubCatagory> productSubCatagory) {
 		this.productSubCatagory = productSubCatagory;
 	}
+ 
 
-	 
-
-	public LocalDateTime getCreatedDate() {
-		return createdDate;
+	public String getImg() {
+		return img;
 	}
 
-	public void setCreatedDate(LocalDateTime createdDate) {
-		this.createdDate = createdDate;
+	public void setImg(String img) {
+		this.img = img;
 	}
 
-	public LocalDateTime getUpdatedTime() {
-		return updatedTime;
+	public List<ProductSubCatagory> getProductSubCatagory() {
+		return productSubCatagory;
 	}
 
-	public void setUpdatedTime(LocalDateTime updatedTime) {
-		this.updatedTime = updatedTime;
+	public void setProductSubCatagory(List<ProductSubCatagory> productSubCatagory) {
+		this.productSubCatagory = productSubCatagory;
 	}
 
-	 
-	 
 	public ProductCatagory(@NotBlank String name) {
 		super();
 		this.name = name;
 	}
 
 	public ProductCatagory() {
-		
+
 	}
 
 	@Override
 	public String toString() {
-		return "ProductCatagory [id=" + id + ", name=" + name + ", icon=" + icon + ", productSubCatagory="
-				+ productSubCatagory + ", createdDate=" + createdDate + ", updatedTime=" + updatedTime + "]";
+		return "ProductCatagory [id=" + id + ", name=" + name + ", icon=" + icon + ", img=" + img
+				+ ", productSubCatagory=" + productSubCatagory + "]";
 	}
 
-    
+	 
 }

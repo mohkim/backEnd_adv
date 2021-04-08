@@ -42,11 +42,12 @@ public class RoleService {
 			return true;
 
 	}
-   public void deleteRoleById(Long c_Id) {
-		roleRepo.deleteById(c_Id);
+   public void deleteRoleById(Long r_Id) {
+		roleRepo.deleteById(r_Id);
 	}
 
 	public List<Role> allRole() {
+	 	 
 		return roleRepo.findAll();
 	}
 

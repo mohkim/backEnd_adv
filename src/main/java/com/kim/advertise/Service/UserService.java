@@ -22,9 +22,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import com.kim.advertise.Repository.UserRepository;
-import com.kim.advertise.controller.UserResource;
+import com.kim.advertise.controller.user.UserResource;
 import com.kim.advertise.entity.PictureUpload;
 import com.kim.advertise.entity.User;
+import com.kim.advertise.entity.view.UserView;
 import com.kim.advertise.utility.Utility;
 
 /**
@@ -83,11 +84,10 @@ public class UserService {
 			return c.get();
 		} else
 			return null;
-	}
-
-	public boolean saveUserImage(MultipartFile file, User user) {
-		
-		try {
+	} 
+	
+		public boolean saveUserImage(MultipartFile file, User user) {
+	     try {
 		    if(user.getImage_url()!=null  ) {
 		        Files.deleteIfExists(this.root.resolve(user.getImage_name()));
 			 } 
@@ -113,7 +113,12 @@ public class UserService {
 
 		}
 	}
-
+    
+	 public  UserView  getUserById(Long id) {
+		 return   userRepo.getUserById(id);
+	 }
+	 
+	 
 	public Resource loadUserImage(Long id) {
 		 
 		User usr=getUser(id);

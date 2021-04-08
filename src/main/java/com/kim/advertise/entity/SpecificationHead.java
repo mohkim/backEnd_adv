@@ -115,6 +115,12 @@ public class SpecificationHead {
 	public void setPlaceholder(String placeholder) {
 		this.placeholder = placeholder;
 	}
+	@Override
+	public String toString() {
+		return "SpecificationHead [label=" + label + ", required=" + required + ", order=" + order + ", controlType="
+				+ controlType + ", type=" + type + ", pattern=" + pattern + ", placeholder=" + placeholder
+				+ ", options=" + options + "]";
+	}
 	 
 	
 }

@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.engine.FetchStyle;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
  
@@ -48,7 +49,9 @@ public class User {
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 	
-
+	@OneToOne(fetch =FetchType.EAGER)
+	@JoinColumn(name="fk_contact")
+    private  Contact   contact;
 	
 	
 	private  boolean   active=false;
@@ -163,8 +166,21 @@ public class User {
 		
 		 this.password=encoder.encode(newPassword);
 	}
+	public  void   encodePassword( ) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		
+		 this.password=encoder.encode(this.password);
+	}
 
 	 
+
+	public Contact getContact() {
+		return contact;
+	}
+
+	public void setContact(Contact contact) {
+		this.contact = contact;
+	}
 
 	public LocalDateTime getUpdatedTime() {
 		return updatedTime;

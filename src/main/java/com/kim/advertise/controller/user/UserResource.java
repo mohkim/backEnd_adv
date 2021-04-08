@@ -1,4 +1,4 @@
-package com.kim.advertise.controller;
+package com.kim.advertise.controller.user;
 
 import java.util.List;
 import java.util.Set;
@@ -31,7 +31,7 @@ import com.kim.advertise.entity.User;
 import com.kim.advertise.entity.post.ERole;
 import com.kim.advertise.jwt.MessageResponse;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+ 
 @RestController
 @RequestMapping("/adv/admin")
 public class UserResource {
@@ -130,7 +130,7 @@ public class UserResource {
 public  ResponseEntity<?> getUserImageUlr( @PathVariable Long  id ) {
 		User  user=userService.getUser(id);
 		 if(user==null) 	return ResponseEntity.badRequest().body(new MessageResponse(""));
-		  return ResponseEntity.ok(new MessageResponse(user.getImage_url()));  
+		  return ResponseEntity.ok(new MessageResponse(user.getImage_name()));  
 	  }
 	
 	@GetMapping("/user/{id}/image/{name}")

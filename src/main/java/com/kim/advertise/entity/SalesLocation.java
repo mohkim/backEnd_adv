@@ -16,6 +16,19 @@ public class SalesLocation {
 	 private   String  country;
 	 
 	 
+	 
+	 
+	public SalesLocation(String city, String state, String country) {
+		super();
+		this.city = city;
+		this.state = state;
+		this.country = country;
+	}
+	
+	public SalesLocation() {
+		super();
+	}
+
 	public Long getId() {
 		return id;
 	}

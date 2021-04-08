@@ -35,5 +35,10 @@ public class SpecificationHeadOption {
 		this.item = item;
 	}
 
+	@Override
+	public String toString() {
+		return "SpecificationHeadOption [item=" + item + "]";
+	}
+
  
 }

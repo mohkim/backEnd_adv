@@ -22,7 +22,7 @@ import com.kim.advertise.Service.RoleService;
 import com.kim.advertise.entity.Role;
 import com.kim.advertise.jwt.MessageResponse;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+ 
 @RestController
 @RequestMapping("/adv/admin")
 

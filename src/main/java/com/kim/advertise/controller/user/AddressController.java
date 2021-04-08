@@ -24,7 +24,7 @@ import com.kim.advertise.entity.Address;
 import com.kim.advertise.entity.User;
 import com.kim.advertise.jwt.MessageResponse;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+ 
 @RestController
 @RequestMapping("/adv")
 

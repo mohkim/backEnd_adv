@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kim.advertise.Service.ProductCatagoryService;
 import com.kim.advertise.entity.ProductCatagory;
+import com.kim.advertise.entity.User;
+import com.kim.advertise.entity.post.Post;
+import com.kim.advertise.form.CatagoryByQuantity;
 import com.kim.advertise.jwt.MessageResponse;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+ 
 @RestController
 @RequestMapping("/adv/admin")
 
@@ -35,6 +40,11 @@ public class ProductCatagoryResource {
 		return list;
 	}
 
+	@GetMapping("/catagorybynumber")
+	 public List<CatagoryByQuantity> getListOfCatagoryByPost() {
+		return catService.getCatagoryByPostQuantity();
+	}
+
 	@GetMapping("/catagory/{id}")
 	public ProductCatagory getSingleCatagory(@PathVariable Long id) {
 		ProductCatagory c = catService.getProductCatagory(id);
@@ -43,7 +53,7 @@ public class ProductCatagoryResource {
 
 	@PostMapping("/catagory")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<?> saveNewUser(@Valid @RequestBody ProductCatagory c) {
+	public ResponseEntity<?> saveNewCatagory(@Valid @RequestBody ProductCatagory c) {
 		if (catService.save(c) != null) {
 			return ResponseEntity.ok(new MessageResponse("New Catagory Saved Successfully !!!"));
 		} else {
@@ -70,4 +80,25 @@ public class ProductCatagoryResource {
 		}
 
 	}
+	@PostMapping( "/catagory/{cid}/image")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public  ResponseEntity<?>  saveCatagoryImage( @RequestParam("file") MultipartFile file,@PathVariable Long cid ) {
+		ProductCatagory cat=catService.getProductCatagory(cid);
+		
+		
+		 if(cat==null)
+			return ResponseEntity.badRequest().body(new MessageResponse("Catagory  Not Found!!!"));
+		 
+		
+	    try {
+	   catService.saveCatgoryImage(file,cat);
+
+	      return ResponseEntity.ok(new MessageResponse("Catagory Image file Saved Successfully !!!"));
+	    } catch (Exception e) {
+	    	return ResponseEntity
+					.badRequest()
+					.body(new MessageResponse("Catagory Image file upload failed !!!"));
+	    }
+	  }
+ 
 }

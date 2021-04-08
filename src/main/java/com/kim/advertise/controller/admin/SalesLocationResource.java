@@ -20,7 +20,7 @@ import com.kim.advertise.Service.SalesLocationService;
 import com.kim.advertise.entity.SalesLocation;
 import com.kim.advertise.jwt.MessageResponse;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+ 
 @RestController
 @RequestMapping("/adv/admin")
 

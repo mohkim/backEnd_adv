@@ -22,7 +22,7 @@ import com.kim.advertise.entity.Contact;
 import com.kim.advertise.entity.User;
 import com.kim.advertise.jwt.MessageResponse;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+ 
 @RestController
 @RequestMapping("/adv")
 
@@ -42,7 +42,7 @@ public class ContactController {
 			return null;
 		}
 
-		return contactService.getByUser(user);
+		return  user.getContact();
 	}
 
 	@PostMapping("/user/{id}/contact")
@@ -54,10 +54,13 @@ public class ContactController {
 		if (user == null) {
 			return ResponseEntity.ok(new MessageResponse("User Not Found  !!!"));
 		}
+		
+  Contact   conta_temp=contactService.save(c);		
+    user.setContact(conta_temp);
 
-		c.setUser(user);
+   userServ.save(user);
 
-		if (contactService.save(c) != null) {
+		if (userServ.save(user)) {
 			return ResponseEntity.ok(new MessageResponse("Contact Saved Successfully !!!"));
 		} else {
 			return ResponseEntity.badRequest().body(new MessageResponse(" Contact Save failed !!!"));

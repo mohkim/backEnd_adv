@@ -13,10 +13,21 @@ import com.kim.advertise.entity.post.Post;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-// common 
- public 	Post[] findByUser(User user);
+
+ // visitor page  request
+ 
+ 
+ @Query("select t from Post t where t.productSubCatagory.productCatagory.id=?1 and  t.post_status.status=?2 ")  // Should be Active 
+ public Post[] getAllPostByCatagory(Long id,EPostStatus status);
+
+ @Query("select t from Post t where t.productSubCatagory.id=?1 and  t.post_status.status=?2 ")  
+ public Post[] getAllPostBySubCatagory(Long id,EPostStatus status);
+
+//common 
+public 	Post[] findByUser(User user);
  
  //for geneal User
+ 
  
  @Query("select t from Post t where t.post_status.status=?1 "
 	 		+ "   order by  t.post_status.status.approved_date DESC ")
@@ -62,6 +73,7 @@ public Post[] findPostRejectedByUser(EPostStatus error, Long id);
  @Query("select t from Post t where t.post_status.status=?1 and t.post_status.status.approvedByUser.id=?2 "
  		+ " order by  t.post_status.status.approved_date  DESC")
 public Post[] findPostAcceptedByUser(EPostStatus accept, Long id);
+
 
 
 

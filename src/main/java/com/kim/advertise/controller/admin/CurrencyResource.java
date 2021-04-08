@@ -20,7 +20,7 @@ import com.kim.advertise.Service.CurrencyService;
 import com.kim.advertise.entity.Currency;
 import com.kim.advertise.jwt.MessageResponse;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+ 
 @RestController
 @RequestMapping("/adv/admin")
 @PreAuthorize("hasRole('ROLE_ADMIN')")

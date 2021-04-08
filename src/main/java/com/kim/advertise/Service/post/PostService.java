@@ -23,7 +23,7 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import com.kim.advertise.Repository.post.PostRepository;
 import com.kim.advertise.Service.PictureUploadService;
 import com.kim.advertise.Service.UserService;
-import com.kim.advertise.controller.PostResource;
+import com.kim.advertise.controller.HomePostResource;
 import com.kim.advertise.entity.PictureUpload;
 import com.kim.advertise.entity.User;
 import com.kim.advertise.entity.post.EPostStatus;
@@ -41,7 +41,7 @@ public class PostService {
 	
 	@Autowired
 	public PictureUploadService picService;
-	private final Path root = Paths.get("K:\\upload\\post");
+	private final Path root = Paths.get("K:\\upload");
 
 	public Post save(Post post) {
 
@@ -82,7 +82,7 @@ public class PostService {
 			Files.copy(file.getInputStream(), this.root.resolve(pic.getName()));
              
 			String url = MvcUriComponentsBuilder
-			          .fromMethodName(PostResource.class, "getImage", post.getId(),pic.getName()).build().toString();
+			          .fromMethodName(HomePostResource.class, "getImage", post.getId(),pic.getName()).build().toString();
 			
 			pic.setUrl(url);
 		 
@@ -224,5 +224,15 @@ public class PostService {
 
 	public Post[] getActivePostByUser(User user) {
 		return  postRepo.findActivePostByUser(EPostStatus.ACTIVE ,user.getId());
+	}
+
+	public Post[] getAllPostByCatagory_active(Long id) {
+	   return  postRepo.getAllPostByCatagory(id,EPostStatus.ACTIVE);
+		 
+	}
+
+	public Post[] getAllPostBySubCatagory_active(Long id) {
+		 
+		return  postRepo.getAllPostBySubCatagory(id,EPostStatus.ACTIVE);
 	}
 }

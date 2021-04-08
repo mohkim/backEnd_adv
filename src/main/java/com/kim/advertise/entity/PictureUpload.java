@@ -9,9 +9,8 @@ public class PictureUpload {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-
 	private String name;
-	 private String url;
+	private String url;
 
 	public PictureUpload() {
 
@@ -21,15 +20,13 @@ public class PictureUpload {
 		this.name = name;
 	}
 
- 
-
 	public Long getId() {
-	return id;
-}
+		return id;
+	}
 
-public void setId(Long id) {
-	this.id = id;
-}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -52,5 +49,4 @@ public void setId(Long id) {
 		return "PictureUpload [id=" + id + ", name=" + name + ", url=" + url + "]";
 	}
 
-	 
 }
