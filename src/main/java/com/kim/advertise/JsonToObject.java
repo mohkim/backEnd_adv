@@ -39,7 +39,10 @@ public class JsonToObject {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	 @Transactional
    public void jsonFilesToDatabase() {	
-        jsonToDataBase("src\\json\\vehicle.json");
+		 if(catService.getAllProductCatagory().isEmpty()) {
+			 jsonToDataBase("src\\json\\vehicle.json"); 
+		 }
+        
 	     
    }
 	 

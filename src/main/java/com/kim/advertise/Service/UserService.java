@@ -26,6 +26,8 @@ import com.kim.advertise.controller.user.UserResource;
 import com.kim.advertise.entity.PictureUpload;
 import com.kim.advertise.entity.User;
 import com.kim.advertise.entity.view.UserView;
+import com.kim.advertise.form.CatagoryByQuantity;
+import com.kim.advertise.form.PostCatagoryByStatus;
 import com.kim.advertise.utility.Utility;
 
 /**
@@ -139,6 +141,10 @@ public class UserService {
 	public String setUserProfileFileName(String file, Long user_id) {
 		String name = Utility.getStringDateTimeofNow() + "_" + user_id + "_." + Utility.getExtenstion(file);
 		return name;
+	}
+	
+	public List<PostCatagoryByStatus>  getPostCatagoryByStatus(Long user_id){
+		 return   userRepo.getAllPostByStatusAndUser(user_id);
 	}
 	
 	

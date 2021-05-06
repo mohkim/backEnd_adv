@@ -40,5 +40,4 @@ public class SpecificationHeadOption {
 		return "SpecificationHeadOption [item=" + item + "]";
 	}
 
- 
 }

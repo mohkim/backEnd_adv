@@ -42,7 +42,7 @@ public class AdvProjectApplication implements CommandLineRunner {
 	public void run(String... arg) throws Exception {
 		data.setData();
 		 
-	//	jsonToObject.jsonFilesToDatabase();
+	 	jsonToObject.jsonFilesToDatabase();
 		 
 	}
  

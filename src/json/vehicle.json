@@ -1,131 +1,248 @@
 {
-    
     "name": "Vehicle",
- 
-  
     "productSubcatagory": [
         {
-            
             "name": "Cars",
             "type": "PRODUCT",
             "specificationList": [
                 {
-                    
                     "value": "",
-                    "key": "Producer Company",
-                    "label": "Producer Company",
+                    "key": "make",
+                    "label": "make",
                     "required": true,
                     "order": null,
                     "controlType": "dropdown",
                     "type": "text",
                     "pattern": "",
-                    "placeholder": "Producer Company",
+                    "placeholder": "make",
                     "option": [
-                        {
-                            
-                            "item": "TOYOTA"
-                        },
-                        {
-                            
-                            "item": "NISSAN"
-                        }
+                        {  "item": "ABARTH" },
+                        {  "item": "ALFA ROMEO" },
+                        {  "item": "ASIA WING" },
+                        {  "item": "ASTON MARTIN" },
+                        {  "item": "AUDI" },
+                        {  "item": "BACKDRAFT" },
+                        {  "item": "BAW" },
+                        {  "item": "BENTLEY" },
+                        {  "item": "BMW" },
+                        {  "item": "CADILLAC" },
+                        {  "item": "CAM" },
+                        {  "item": "CHANA" },
+                        {  "item": "CHANGAN" },
+                        {  "item": "CHERY" },
+                        {  "item": "CHEVROLET" },
+                        {  "item": "CHRYSLER" },
+                        {  "item": "CITROEN" },
+                        {  "item": "CMC" },
+                        {  "item": "DACIA" },
+                        {  "item": "DAEWOO" },
+                        {  "item": "DAIHATSU" },
+                        {  "item": "DATSUN" },
+                        {  "item": "DAIMLER" },
+                        {  "item": "DFM" },
+                        {  "item": "DFSK" },
+                        {  "item": "DMC" },
+                        {  "item": "DODGE" },
+                        {  "item": "DTV" },
+                        {  "item": "EMGRAND" },
+                        {  "item": "FAW" },
+                        {  "item": "FERRARI" },
+                        {  "item": "FIAT" },
+                        {  "item": "FORCE" },
+                        {  "item": "FORD" },
+                        {  "item": "FOTON" },
+                        {  "item": "FUDI" },
+                        {  "item": "FUSO" },
+                        {  "item": "GAZ" },
+                        {  "item": "GEELY" },
+                        {  "item": "GOLDEN JOURNEY" },
+                        {  "item": "GONOW" },
+                        {  "item": "GWM" },
+                        {  "item": "HAFEI" },
+                        {  "item": "HAISE" },
+                        {  "item": "HAJADU" },
+                        {  "item": "HAVAL" },
+                        {  "item": "HINO" },
+                        {  "item": "HONDA" },
+                        {  "item": "HUMMER" },
+                        {  "item": "HYUNDAI" },
+                        {  "item": "INFINITI" },
+                        {  "item": "ISUZU" },
+                        {  "item": "IVECO" },
+                        {  "item": "JAC" },
+                        {  "item": "JAGUAR" },
+                        {  "item": "JEEP" },
+                        {  "item": "JINBEI" },
+                        {  "item": "JMC" },
+                        {  "item": "KIA" },
+                        {  "item": "KTM" },
+                        {  "item": "LADA" },
+                        {  "item": "LAMBORGHINI" },
+                        {  "item": "LANCIA" },
+                        {  "item": "LAND ROVER" },
+                        {  "item": "LEXUS" },
+                        {  "item": "LOTUS" },
+                        {  "item": "MAHINDRA" },
+                        {  "item": "MANDARIN" },
+                        {  "item": "MASERATI" },
+                        {  "item": "MAYBACH" },
+                        {  "item": "MAXUS" },
+                        {  "item": "MAZDA" },
+                        {  "item": "MEIYA" },
+                        {  "item": "MERCEDES-BENZ" },
+                        {  "item": "MG" },
+                        {  "item": "MINI" },
+                        {  "item": "MITSUBISHI" },
+                        {  "item": "MORGAN" },
+                        {  "item": "NANFENG" },
+                        {  "item": "NISSAN" },
+                        {  "item": "NOBLE" },
+                        {  "item": "OPEL" },
+                        {  "item": "PEUGEOT" },
+                        {  "item": "POLARSUN" },
+                        {  "item": "PORSCHE" },
+                        {  "item": "PROTON" },
+                        {  "item": "RENAULT" },
+                        {  "item": "ROLLS-ROYCE" },
+                        {  "item": "ROVER" },
+                        {  "item": "SAAB" },
+                        {  "item": "SAIC" },
+                        {  "item": "SEAT" },
+                        {  "item": "SMART" },
+                        {  "item": "SOYAT" },
+                        {  "item": "SSANGYONG" },
+                        {  "item": "SUBARU" },
+                        {  "item": "SUZUKI" },
+                        {  "item": "TATA" },
+                        {  "item": "TOYOTA" },
+                        {  "item": "TVR" },
+                        {  "item": "VOLKSWAGEN" },
+                        {  "item": "VOLVO" },
+                        {  "item": "ZOTYE" },
+                        {  "item": "ZX AUTO" },
+                        {  "item": "OTHER" }
+                        
                     ]
                 },
                 {
-                    
                     "value": "",
-                    "key": "CONDITION",
-                    "label": "CONDITION",
+                    "key": "color",
+                    "label": "color",
                     "required": true,
                     "order": null,
                     "controlType": "dropdown",
                     "type": "text",
                     "pattern": "",
-                    "placeholder": "CONDITION",
+                    "placeholder": "color",
                     "option": [
-                        {
-                            
-                            "item": "NEW"
-                        },
-                        {
-                            
-                            "item": "USED"
-                        }
+                      {  "item": "BLACK" },
+                        {  "item": "BLUE" },
+                        {  "item": "BROWN" },
+                        {  "item": "BURGUNDY" },
+                        {  "item": "GOLD" },
+                        {  "item": "GREY" },
+                        {  "item": "GREEN" },
+                        {  "item": "ORANGE" },
+                        {  "item": "PINK" },
+                        {  "item": "PURPLE" },
+                        {  "item": "RED" },
+                        {  "item": "SILVER" },
+                        {  "item": "TAN" },
+                        {  "item": "TEAL" },
+                        {  "item": "WHITE" },
+                        {  "item": "YELLOW" },
+                        {  "item": "OTHER" }
                     ]
                 },
                 {
-                    
                     "value": "",
-                    "key": "COLOR",
-                    "label": "COLOR",
+                    "key": "Transmission",
+                    "label": "Transmission",
                     "required": true,
                     "order": null,
                     "controlType": "dropdown",
                     "type": "text",
                     "pattern": "",
-                    "placeholder": "COLOR",
+                    "placeholder": "Transmission",
                     "option": [
-                        {
-                            
-                            "item": "WHITE"
-                        },
-                        {
-                            
-                            "item": "BLUE"
-                        },
-                        {
-                            
-                            "item": "RED"
-                        }
+                        {  "item": "MANUAL" },
+                        {  "item": "AUTOMATIC" }
+                    ]
+                },
+                {
+                    "value": "",
+                    "key": "Body Type",
+                    "label": "Body Type",
+                    "required": true,
+                    "order": null,
+                    "controlType": "dropdown",
+                    "type": "text",
+                    "pattern": "",
+                    "placeholder": "Body Type",
+                    "option": [
+                        {  "item": "CONVERTIBLE" },
+                        {  "item": "COUPE" },
+                        {  "item": "HATCHBACK" },
+                        {  "item": "MPV/BUS" },
+                        {  "item": "SEDAN" },
+                        {  "item": "SUV" },
+                        {  "item": "STATIONWAGON" },
+                        {  "item": "SINGLE CAB" },
+                        {  "item": "DOUBLE CAB" },
+                        {  "item": "PANEL VAN" },
+                          {  "item": "OTHER" }
                     ]
                 },
                 {
                     
                     "value": "",
-                    "key": "YEAR OF MANUFATURE",
-                    "label": "YEAR OF MANUFATURE",
+                    "key": "YEAR",
+                    "label": "YEAR",
                     "required": true,
                     "order": null,
                     "controlType": "textbox",
                     "type": "text",
-                    "pattern": "/^(199\\d|200\\d|2010)$/",
-                    "placeholder": "YEAR OF MANUFATURE",
+                    "pattern": "",
+                    "placeholder": "YEAR",
                     "option": []
                 },
                 {
                     
                     "value": "",
-                    "key": "REGISTERED CAR",
-                    "label": "REGISTERED CAR",
-                    "required": true,
-                    "order": null,
-                    "controlType": "dropdown",
-                    "type": "text",
-                    "pattern": "",
-                    "placeholder": "REGISTERED CAR",
-                    "option": [
-                        {
-                            
-                            "item": "YES"
-                        },
-                        {
-                            
-                            "item": "NO"
-                        }
-                    ]
-                },
-                {
-                    
-                    "value": "",
-                    "key": "Model",
-                    "label": "Model",
+                    "key": "Kilometer",
+                    "label": "Kilometer",
                     "required": true,
                     "order": null,
                     "controlType": "textbox",
                     "type": "text",
                     "pattern": "",
-                    "placeholder": "Model",
+                    "placeholder": "Kilometer",
                     "option": []
+                },
+                {
+                    "value": "",
+                    "key": "Fuel Type",
+                    "label": "Fuel Type",
+                    "required": true,
+                    "order": null,
+                    "controlType": "dropdown",
+                    "type": "text",
+                    "pattern": "",
+                    "placeholder": "Fuel Type",
+                    "option": [
+                        {
+                            "item": "PETROL"
+                        },
+                        {
+                            "item": "DIESEL"
+                        },
+                        {
+                            "item": "HYBRID"
+                        },
+                        {
+                            "item": "ELECTRIC"
+                        }
+                    ]
                 }
             ],
             "contact": false,

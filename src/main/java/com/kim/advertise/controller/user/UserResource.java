@@ -29,6 +29,7 @@ import com.kim.advertise.Service.UserService;
 import com.kim.advertise.entity.Role;
 import com.kim.advertise.entity.User;
 import com.kim.advertise.entity.post.ERole;
+import com.kim.advertise.form.PostCatagoryByStatus;
 import com.kim.advertise.jwt.MessageResponse;
 
  
@@ -50,8 +51,10 @@ public class UserResource {
 	}
 	@GetMapping("/user/{id}")
     public User getSingleUser(@PathVariable  Long id) {
-	 User c=userService.getUser(id);
+	
+		User c=userService.getUser(id);
 		return   c;
+		
 	}
 	@GetMapping("/user/{id}/role")
     public Set<Role> getAllUserRole(@PathVariable  Long id) {
@@ -175,6 +178,10 @@ public  ResponseEntity<?> getUserImageUlr( @PathVariable Long  id ) {
 		  }
 	 	 
 	}
-	
+ 
+	@GetMapping("/user/{id}/post_catagory_status")
+    public List<PostCatagoryByStatus> getPostCatagoryByStatusOfUser(@PathVariable  Long id) {
+	   return   userService.getPostCatagoryByStatus(id);
+	 }
 }
 
