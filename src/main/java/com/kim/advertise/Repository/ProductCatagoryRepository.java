@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.kim.advertise.entity.ProductCatagory;
-import com.kim.advertise.entity.post.EPostStatus;
+import com.kim.advertise.entity.emum.EPostStatus;
 import com.kim.advertise.form.CatagoryByQuantity;
  
 

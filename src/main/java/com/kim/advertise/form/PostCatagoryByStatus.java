@@ -1,6 +1,6 @@
 package com.kim.advertise.form;
 
-import com.kim.advertise.entity.post.EPostStatus;
+import com.kim.advertise.entity.emum.EPostStatus;
 
 public class PostCatagoryByStatus {
 

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.kim.advertise.entity.User;
-import com.kim.advertise.entity.post.EPostStatus;
+import com.kim.advertise.entity.emum.EPostStatus;
 import com.kim.advertise.entity.view.UserView;
 import com.kim.advertise.form.CatagoryByQuantity;
 import com.kim.advertise.form.PostCatagoryByStatus;
@@ -36,4 +36,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	Boolean existsByUsername(String username);
 
 	Boolean existsByEmail(String email);
+
+
+
+
+	@Query("select u from User u where u.email=?1 ")
+	public User findByEmail(String email);
 }

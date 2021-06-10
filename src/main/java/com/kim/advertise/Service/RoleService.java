@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kim.advertise.Repository.RoleRepository;
 import com.kim.advertise.entity.Role;
-import com.kim.advertise.entity.post.ERole;
+import com.kim.advertise.entity.emum.ERole;
 
 /**
  *

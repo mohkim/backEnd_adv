@@ -36,7 +36,7 @@ import com.kim.advertise.Service.UserService;
 import com.kim.advertise.entity.ConfirmationToken;
 import com.kim.advertise.entity.Role;
 import com.kim.advertise.entity.User;
-import com.kim.advertise.entity.post.ERole;
+import com.kim.advertise.entity.emum.ERole;
 import com.kim.advertise.form.PasswordChangeForm;
 import com.kim.advertise.jwt.JwtResponse;
 import com.kim.advertise.jwt.JwtUtils;

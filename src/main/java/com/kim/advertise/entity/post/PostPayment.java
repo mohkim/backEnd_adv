@@ -3,6 +3,7 @@ package com.kim.advertise.entity.post;
 import javax.persistence.*;
 
 import com.kim.advertise.entity.Currency;
+import com.kim.advertise.entity.emum.EPostPaymentOptions;
 
  
 

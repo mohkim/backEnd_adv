@@ -12,7 +12,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +27,7 @@ import com.kim.advertise.Service.RoleService;
 import com.kim.advertise.Service.UserService;
 import com.kim.advertise.entity.Role;
 import com.kim.advertise.entity.User;
-import com.kim.advertise.entity.post.ERole;
+import com.kim.advertise.entity.emum.ERole;
 import com.kim.advertise.form.PostCatagoryByStatus;
 import com.kim.advertise.jwt.MessageResponse;
 
@@ -56,6 +55,13 @@ public class UserResource {
 		return   c;
 		
 	}
+	@GetMapping("/user/email/{email}")
+    public User getSingleUserByEmail(@PathVariable  String email) {
+	
+		User c=userService.getUserByEmail(email);
+		return   c;
+		
+	}
 	@GetMapping("/user/{id}/role")
     public Set<Role> getAllUserRole(@PathVariable  Long id) {
 	 return userService.getUser(id).getRoles();
@@ -67,9 +73,7 @@ public class UserResource {
 	        
 		// userService.deleteUserById(id);
 		 return ResponseEntity.ok(new MessageResponse("User deleted Successfully !!!"));
-			  
-		 
-	}
+    }
 	@PostMapping("/user")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> saveUser( @Valid @RequestBody User c) {

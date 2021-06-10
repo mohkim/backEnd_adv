@@ -1,7 +1,7 @@
 package com.kim.advertise.entity.view;
 
 import com.kim.advertise.entity.Currency;
-import com.kim.advertise.entity.post.EPostPaymentOptions;
+import com.kim.advertise.entity.emum.EPostPaymentOptions;
 
 public interface PostPaymentView {
 

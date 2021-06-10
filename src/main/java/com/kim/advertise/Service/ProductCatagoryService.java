@@ -14,16 +14,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import com.kim.advertise.Repository.ProductCatagoryRepository;
 import com.kim.advertise.Repository.ProductSubCatagoryRepository;
 import com.kim.advertise.Repository.UserRepository;
-import com.kim.advertise.controller.user.UserResource;
 import com.kim.advertise.entity.ProductCatagory;
 import com.kim.advertise.entity.ProductSubCatagory;
-import com.kim.advertise.entity.User;
-import com.kim.advertise.entity.post.EPostStatus;
+import com.kim.advertise.entity.emum.EPostStatus;
 import com.kim.advertise.form.CatagoryByQuantity;
 import com.kim.advertise.utility.Utility;
  

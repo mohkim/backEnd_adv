@@ -1,5 +1,6 @@
 package com.kim.advertise.controller.admin;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -37,9 +38,10 @@ public class SpecificationHeaderOptionResource {
 	@GetMapping("head_optionlist/{id}")
 	public List<SpecificationHeadOption> getAllSpecificationHeadOption(@PathVariable Long id) {
 		SpecificationHead speHead = speHService.getSpecificationHead(id);
-
-		return speHead.getOption();
+       return speHead.getOptions();
 	}
+
+	 
 
 	@GetMapping("/head_option/{id}")
 	public SpecificationHeadOption getSingleSpecificationHeadOption(@PathVariable Long id) {
@@ -72,7 +74,7 @@ public class SpecificationHeaderOptionResource {
 			
 			SpecificationHeadOption  opt2=spHeaOptionService.save(spHeadO);
 			
-			spH.addOption(opt2);
+			spH.addOptions(opt2);
 
 			if (speHService.save(spH) != null) {
 
@@ -86,6 +88,30 @@ public class SpecificationHeaderOptionResource {
 		} else {
 			return ResponseEntity.badRequest().body(new MessageResponse("  Specification Head not Found !!"));
 		}
+
+	}
+	
+	@PostMapping("/specification_head/{id}/head_option_list")
+ 	//@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public void saveSpecificationOptionList(@PathVariable Long id,@Valid @RequestBody List<SpecificationHeadOption> optionList) {
+		 
+		SpecificationHead  spH = speHService.getSpecificationHead(id);
+
+		for (SpecificationHeadOption specificationHeadOption : optionList) {
+		
+			if (spH != null) {
+				
+				SpecificationHeadOption  opt2=spHeaOptionService.save(specificationHeadOption);
+				
+				spH.addOptions(opt2);
+				
+
+	 
+			} 
+			
+		}
+		speHService.save(spH);
+		
 
 	}
 }

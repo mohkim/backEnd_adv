@@ -5,6 +5,7 @@
  */
 package com.kim.advertise.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class SpecificationHeadOptionService {
            return  speHedOptionRepo.save(specificationHead);
      
 	}
-	 
+ 
 	public  void    removeSpecificationHeadOption( Long  id ) {
 		speHedOptionRepo.deleteById(id);     
 	}

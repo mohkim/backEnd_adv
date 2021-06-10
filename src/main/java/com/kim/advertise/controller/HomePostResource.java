@@ -18,7 +18,7 @@ import com.kim.advertise.Service.UserService;
 import com.kim.advertise.Service.post.PostService;
 import com.kim.advertise.entity.PictureUpload;
 import com.kim.advertise.entity.User;
-import com.kim.advertise.entity.post.EPostStatus;
+import com.kim.advertise.entity.emum.EPostStatus;
 import com.kim.advertise.entity.post.Post;
 import com.kim.advertise.entity.view.UserView;
 

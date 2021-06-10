@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kim.advertise.Service.UserService;
 import com.kim.advertise.Service.post.PostService;
 import com.kim.advertise.entity.User;
-import com.kim.advertise.entity.post.EPostStatus;
+import com.kim.advertise.entity.emum.EPostStatus;
 import com.kim.advertise.entity.post.Post;
 import com.kim.advertise.entity.post.Post_Status;
 import com.kim.advertise.jwt.MessageResponse;

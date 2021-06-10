@@ -11,13 +11,14 @@ import javax.persistence.Id;
  
 @Entity
 
-public class SpecificationHeadOption {
+public class SpecificationHeadOption   {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
  
     private String  item;
+    private String  pvalue="";
 
 	public Long getId() {
 		return id;
@@ -35,9 +36,11 @@ public class SpecificationHeadOption {
 		this.item = item;
 	}
 
-	@Override
-	public String toString() {
-		return "SpecificationHeadOption [item=" + item + "]";
+	public String getPvalue() {
+		return pvalue;
 	}
 
+	public void setPvalue(String pvalue) {
+		this.pvalue = pvalue;
+	}
 }

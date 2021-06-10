@@ -15,6 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.kim.advertise.entity.emum.ESelectType;
+
+import net.bytebuddy.implementation.bind.annotation.Default;
+
  
 @Entity
 public class SpecificationHead {
@@ -24,7 +28,7 @@ public class SpecificationHead {
     private Long id;
 
      
-    private String value;
+//    private String value;
     private String key;
     private String label;
     private boolean required;
@@ -32,6 +36,12 @@ public class SpecificationHead {
     private Integer order;
     private String controlType;
     private String type;
+    //properties  for 
+     
+      private ESelectType  selectType=ESelectType.NONE;
+      private String   parentkey="";
+    ///  parentvalue:"", ==> will be use in front 
+    
     public String getType() {
 		return type;
 	}
@@ -47,17 +57,13 @@ public class SpecificationHead {
         )
     @JoinColumn(name = "fk_specificationHead" )
     private List<SpecificationHeadOption> options=new ArrayList<SpecificationHeadOption>();
+	
+    
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getValue() {
-		return value;
-	}
-	public void setValue(String value) {
-		this.value = value;
 	}
 	public String getKey() {
 		return key;
@@ -77,7 +83,6 @@ public class SpecificationHead {
 	public void setRequired(boolean required) {
 		this.required = required;
 	}
-	 
 	public Integer getOrder() {
 		return order;
 	}
@@ -90,24 +95,23 @@ public class SpecificationHead {
 	public void setControlType(String controlType) {
 		this.controlType = controlType;
 	}
+	public ESelectType getSelectType() {
+		return selectType;
+	}
+	public void setSelectType(ESelectType selectType) {
+		this.selectType = selectType;
+	}
+	public String getParentkey() {
+		return parentkey;
+	}
+	public void setParentkey(String parentkey) {
+		this.parentkey = parentkey;
+	}
 	public String getPattern() {
 		return pattern;
 	}
 	public void setPattern(String pattern) {
 		this.pattern = pattern;
-	}
-	public List<SpecificationHeadOption> getOption() {
-		return options;
-	}
-	public void setOption(List<SpecificationHeadOption> option) {
-		this.options = option;
-	}
-	public void addOption(SpecificationHeadOption option) {
-		this.options.add(option);
-	}
- 
-	public void removeOption(SpecificationHeadOption option) {
-		this.options.remove(option);
 	}
 	public String getPlaceholder() {
 		return placeholder;
@@ -115,11 +119,20 @@ public class SpecificationHead {
 	public void setPlaceholder(String placeholder) {
 		this.placeholder = placeholder;
 	}
-	@Override
-	public String toString() {
-		return "SpecificationHead [label=" + label + ", required=" + required + ", order=" + order + ", controlType="
-				+ controlType + ", type=" + type + ", pattern=" + pattern + ", placeholder=" + placeholder
-				+ ", options=" + options + "]";
+	public List<SpecificationHeadOption> getOptions() {
+		return options;
+	}
+	public void setOptions(List<SpecificationHeadOption> options) {
+		this.options = options;
+	}
+	public void addOptions(SpecificationHeadOption opt) {
+		this.options.add(opt);
+	}
+	public void removeOptions(SpecificationHeadOption opt) {
+		this.options.remove(opt);
+	}
+	public  void  removeSpaceFromKey() {
+		this.key=this.key.replaceAll("\\s", "");
 	}
 	 
 	

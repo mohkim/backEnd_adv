@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kim.advertise.Repository.ProductSubCatagoryRepository;
 import com.kim.advertise.entity.ProductSubCatagory;
-import com.kim.advertise.entity.post.EPostStatus;
+import com.kim.advertise.entity.emum.EPostStatus;
 import com.kim.advertise.form.CatagoryByQuantity;
 import com.kim.advertise.form.SubCatagoryByQuantity;
  

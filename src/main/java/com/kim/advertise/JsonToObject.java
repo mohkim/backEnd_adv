@@ -21,9 +21,7 @@ import com.kim.advertise.entity.*;
 
 @Component
 public class JsonToObject {
-	
- 
-	
+
 	@Autowired
 	private ProductCatagoryService catService;
 
@@ -35,38 +33,39 @@ public class JsonToObject {
 
 	@Autowired
 	private SpecificationHeadOptionService SpecificationHeadService;
-	
-	private Logger log = LoggerFactory.getLogger(this.getClass());
-	 @Transactional
-   public void jsonFilesToDatabase() {	
-		 if(catService.getAllProductCatagory().isEmpty()) {
-			 jsonToDataBase("src\\json\\vehicle.json"); 
-		 }
-        
-	     
-   }
-	 
-	 public void  jsonToDataBase(String fileName) {
-		 
-		 //create ObjectMapper instance
-	       ObjectMapper objectMapper = new ObjectMapper();
 
-	       //read json file and convert to customer object
-	       try {
-	    	   ProductCatagory cat = objectMapper.readValue(new File(fileName), ProductCatagory.class);
-	   
-	           List<ProductSubCatagory> subcatlist=cat.getProductSubcatagory();
-	          cat=catService.save(cat);
-	                 for(ProductSubCatagory scat:subcatlist) {
-	                	  scat.setProductCatagory(cat);
-	             ProductSubCatagory  subCatagory=subCatService.save(scat);
-	                	 
-	                 }
-	        
-		} catch (Exception e) {
-			   e.printStackTrace() ;
+	private Logger log = LoggerFactory.getLogger(this.getClass());
+
+	@Transactional
+	public void jsonFilesToDatabase() {
+		if (catService.getAllProductCatagory().isEmpty()) {
+			jsonToDataBase("src\\json\\vehicle.json");
 		}
-	    
-	 }
- 
+
+	}
+
+	public void jsonToDataBase(String fileName) {
+
+		// create ObjectMapper instance
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		// read json file and convert to customer object
+		try {
+			ProductCatagory cat = objectMapper.readValue(new File(fileName), ProductCatagory.class);
+
+			List<ProductSubCatagory> subcatlist = cat.getProductSubcatagory();
+			cat = catService.save(cat);
+			for (ProductSubCatagory scat : subcatlist) {
+				scat.setProductCatagory(cat);
+				scat.removeSpaceFromSpecificationHead();
+				ProductSubCatagory subCatagory = subCatService.save(scat);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }

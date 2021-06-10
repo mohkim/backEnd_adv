@@ -7,6 +7,7 @@ import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.kim.advertise.entity.User;
+import com.kim.advertise.entity.emum.EPostStatus;
 
  
 

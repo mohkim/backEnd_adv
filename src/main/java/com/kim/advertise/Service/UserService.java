@@ -146,6 +146,10 @@ public class UserService {
 	public List<PostCatagoryByStatus>  getPostCatagoryByStatus(Long user_id){
 		 return   userRepo.getAllPostByStatusAndUser(user_id);
 	}
+
+	public User getUserByEmail(String email) {
+		 return  userRepo.findByEmail(email);
+	}
 	
 	
 	

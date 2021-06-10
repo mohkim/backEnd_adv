@@ -2,7 +2,7 @@ package com.kim.advertise.entity.view;
 
 import java.util.List;
 
-import com.kim.advertise.entity.post.EType;
+import com.kim.advertise.entity.emum.EType;
 
 public interface ProductSubCatagoryView {
 

@@ -11,7 +11,7 @@ import com.kim.advertise.entity.Currency;
 import com.kim.advertise.entity.Role;
 import com.kim.advertise.entity.SalesLocation;
 import com.kim.advertise.entity.User;
-import com.kim.advertise.entity.post.ERole;
+import com.kim.advertise.entity.emum.ERole;
 @Component
 public class DefaultData {
 

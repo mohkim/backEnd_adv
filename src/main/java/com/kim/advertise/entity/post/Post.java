@@ -37,9 +37,6 @@ public class Post {
 
 	
 	private String description;
-	
-
-	
 	@Column(length = 10485760)
 	private String detail;
     

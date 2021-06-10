@@ -1,5 +1,6 @@
 package com.kim.advertise.controller.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -20,6 +21,7 @@ import com.kim.advertise.Service.ProductSubCatagoryService;
 import com.kim.advertise.Service.SpecificationHeadService;
 import com.kim.advertise.entity.ProductSubCatagory;
 import com.kim.advertise.entity.SpecificationHead;
+import com.kim.advertise.form.SubCatagoryByQuantity;
 import com.kim.advertise.jwt.MessageResponse;
 
  
@@ -40,7 +42,19 @@ public class SpecificationHeaderResource {
 
 		return pSubCat.getSpecificationList();
 	}
-
+	@GetMapping("/subcatagory/{id}/specification_head/key")
+	public List<String> getAllSpecificationHeadKey(@PathVariable Long id) {
+	  List<String>  list=new ArrayList<String>();
+		ProductSubCatagory pSubCat = subCatagoryService.getProductSubCatagory(id);
+            List<SpecificationHead> sp_list=pSubCat.getSpecificationList();
+            for (SpecificationHead specificationHead : sp_list) {
+				list.add(specificationHead.getKey());
+			}
+            
+		return list;
+		    
+	 
+	}
 	@GetMapping("/specification_head/{id}")
 	public SpecificationHead getSingleSpecificationHead(@PathVariable Long id) {
 
@@ -73,7 +87,7 @@ public class SpecificationHeaderResource {
 			
 			if(spHead.getId() > 0L) 	{
 		    	   temp=speHeadService.getSpecificationHead(spHead.getId());
-		    	   spHead.setOption(temp.getOption());
+		    	   spHead.setOptions(temp.getOptions());
 		       }
 			   
 			

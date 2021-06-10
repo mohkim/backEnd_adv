@@ -21,7 +21,7 @@ import org.hibernate.annotations.ColumnDefault;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.kim.advertise.entity.post.EType;
+import com.kim.advertise.entity.emum.EType;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -288,7 +288,12 @@ public class ProductSubCatagory {
 		this.fee_year=fee_year;
 	}
 
-
+    public void removeSpaceFromSpecificationHead() {
+    	for (SpecificationHead specificationHead : specificationList) {
+    		specificationHead.removeSpaceFromKey();
+			
+		}
+    }
 	@Override
 	public String toString() {
 		return "ProductSubCatagory [id=" + id + ", productCatagory=" + productCatagory + ", name=" + name + ", type="

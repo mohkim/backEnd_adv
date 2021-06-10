@@ -1,4 +1,4 @@
-package com.kim.advertise.entity.post;
+package com.kim.advertise.entity.emum;
 
 public enum EPostStatus {
 	PENDING,

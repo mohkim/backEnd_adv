@@ -2,7 +2,7 @@ package com.kim.advertise.entity;
 
 import javax.persistence.*;
 
-import com.kim.advertise.entity.post.ERole;
+import com.kim.advertise.entity.emum.ERole;
 
  
 
