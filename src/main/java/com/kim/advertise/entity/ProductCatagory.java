@@ -37,7 +37,7 @@ public class ProductCatagory {
 	@NotBlank
 	private String name;
 
-	private String icon;
+ 
 
 	private String img;
 
@@ -64,13 +64,7 @@ public class ProductCatagory {
 		this.name = name;
 	}
 
-	public String getIcon() {
-		return icon;
-	}
 
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
 
 	public List<ProductSubCatagory> getProductSubcatagory() {
 		return productSubCatagory;
@@ -116,7 +110,7 @@ public class ProductCatagory {
 
 	@Override
 	public String toString() {
-		return "ProductCatagory [id=" + id + ", name=" + name + ", icon=" + icon + ", img=" + img
+		return "ProductCatagory [id=" + id + ", name=" + name +  ", img=" + img
 				+ ", productSubCatagory=" + productSubCatagory + "]";
 	}
 

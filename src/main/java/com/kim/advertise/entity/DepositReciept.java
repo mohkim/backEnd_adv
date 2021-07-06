@@ -5,6 +5,9 @@ import java.time.LocalDateTime;
 import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import  static   com.kim.advertise.utility.Utility.getReceiptNumber;
 
 @Entity
 
@@ -15,18 +18,21 @@ public class DepositReciept {
 
 	private Long id;
 
-	@OneToOne
+	@OneToOne 
 	@JoinColumn(name = "fk_user")
 	private User user;
 
 	private String description;
-	private String receiptNo;
+	 
 
 	private Integer amount;
 
 	private boolean receipt_void = false;
-	@CreationTimestamp
-	private LocalDateTime created_date;
+ 
+    @CreationTimestamp
+    public LocalDateTime createdDate;
+    @UpdateTimestamp
+    public LocalDateTime  updatedDate;
 
 	@ManyToOne
 	@JoinColumn(name = "fk_casher")
@@ -60,13 +66,7 @@ public class DepositReciept {
 		this.receipt_void = receipt_void;
 	}
 
-	public LocalDateTime getCreated_date() {
-		return created_date;
-	}
-
-	public void setCreated_date(LocalDateTime created_date) {
-		this.created_date = created_date;
-	}
+ 
 
 	public Long getId() {
 		return id;
@@ -83,14 +83,7 @@ public class DepositReciept {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public String getReceiptNo() {
-		return receiptNo;
-	}
-
-	public void setReceiptNo(String receiptNo) {
-		this.receiptNo = receiptNo;
-	}
+ 
 
 	public Integer getAmount() {
 		return amount;
@@ -115,5 +108,25 @@ public class DepositReciept {
 	public void setUser_casher(User user_casher) {
 		this.user_casher = user_casher;
 	}
+ 
+	
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+
+	 
+
+	public LocalDateTime getUpdatedDate() {
+		return updatedDate;
+	}
+
+	@Override
+	public String toString() {
+		return "DepositReciept [id=" + id + ", user=" + user.getFullName() + ", description=" + description + ", receiptNo="
+				  + ", amount=" + amount + ", receipt_void=" + receipt_void + ", created_date=" +", user_casher=" + user_casher + ", user_void=" + user_void + ", void_date=" + void_date + "]";
+	}
+	
+	
+	
 
 }

@@ -86,7 +86,7 @@ public class ProductCatagoryService {
 		
 		try {
 		    if(cat.getImg()!=null  ) {
-		        Files.deleteIfExists(this.root.resolve(cat.getImg()));
+		       // Files.deleteIfExists(this.root.resolve(cat.getImg()));
 			 } 
 	 	    cat.setImg(setCatagoryFileName(file.getOriginalFilename(),cat.getId()));
 			Files.copy(file.getInputStream(), this.root.resolve(cat.getImg()));
